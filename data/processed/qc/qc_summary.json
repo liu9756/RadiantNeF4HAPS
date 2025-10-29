@@ -1,0 +1,34 @@
+{
+  "n_files": 1,
+  "n_rows_raw": 114,
+  "n_rows_after_dedup": 79,
+  "n_rows_in_alt_range": 22,
+  "neg_dose_count": 0,
+  "schema_units": {
+    "unit_ok": true,
+    "issues": [],
+    "particle_total_ratio": 0.7017543859649122
+  },
+  "month_avg": {
+    "monthly_avg_ratio": 0.5175438596491229
+  },
+  "altitude_filter": {
+    "altitude_kept": 22,
+    "altitude_dropped": 57
+  },
+  "profile_summary": {
+    "n_profiles": 5,
+    "pf_soft_ok_ratio": 0.0,
+    "median_h_star_km": 11.887200000047548,
+    "median_n_peaks": 0.0
+  },
+  "latitude_trend": {
+    "heights_checked": [
+      12,
+      14,
+      18,
+      20
+    ],
+    "monotone_pass_ratio": 0.75
+  }
+}

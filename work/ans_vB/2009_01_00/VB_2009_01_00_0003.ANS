@@ -1,0 +1,45 @@
+     LAT,       LON,     ALTITUDE,    DATE,    HR, VCR(GV), PARTICLE,  DOSE RATE,     SIGMA,        UNIT,      QUANTITY 
+   0.00000,  64.00000, 52493.0000,F,2009/01/00,   0, 16.39,TOTAL     , 2.6755E+00, 1.6875E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+   0.00000,  72.00000, 52493.0000,F,2009/01/00,   0, 16.71,TOTAL     , 2.6309E+00, 1.6503E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+   0.00000,  80.00000, 52493.0000,F,2009/01/00,   0, 16.95,TOTAL     , 2.5974E+00, 1.6295E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+   0.00000,  88.00000, 52493.0000,F,2009/01/00,   0, 17.09,TOTAL     , 2.5778E+00, 1.6204E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+   0.00000,  96.00000, 52493.0000,F,2009/01/00,   0, 17.12,TOTAL     , 2.5730E+00, 1.6186E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+   0.00000, 104.00000, 52493.0000,F,2009/01/00,   0, 17.07,TOTAL     , 2.5810E+00, 1.6218E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:            8 IN PLACES.DAT
+                                                             
+   0.00000, 112.00000, 52493.0000,F,2009/01/00,   0, 16.92,TOTAL     , 2.6016E+00, 1.6318E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           10 IN PLACES.DAT
+                                                             
+   0.00000, 120.00000, 52493.0000,F,2009/01/00,   0, 16.70,TOTAL     , 2.6318E+00, 1.6509E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           12 IN PLACES.DAT
+                                                             
+   0.00000, 128.00000, 52493.0000,F,2009/01/00,   0, 16.46,TOTAL     , 2.6651E+00, 1.6779E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           14 IN PLACES.DAT
+                                                             
+   0.00000, 136.00000, 52493.0000,F,2009/01/00,   0, 16.21,TOTAL     , 2.6996E+00, 1.7121E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           16 IN PLACES.DAT
+                                                             
+   0.00000, 144.00000, 52493.0000,F,2009/01/00,   0, 15.99,TOTAL     , 2.7321E+00, 1.7463E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           18 IN PLACES.DAT
+                                                             
+   0.00000, 152.00000, 52493.0000,F,2009/01/00,   0, 15.78,TOTAL     , 2.7639E+00, 1.7745E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           20 IN PLACES.DAT
+                                                             
+   0.00000, 160.00000, 52493.0000,F,2009/01/00,   0, 15.60,TOTAL     , 2.7913E+00, 1.8025E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           22 IN PLACES.DAT
+                                                             
+   0.00000, 168.00000, 52493.0000,F,2009/01/00,   0, 15.44,TOTAL     , 2.8156E+00, 1.8299E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           24 IN PLACES.DAT
+                                                             
+   0.00000, 176.00000, 52493.0000,F,2009/01/00,   0, 15.27,TOTAL     , 2.8420E+00, 1.8566E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           26 IN PLACES.DAT
+                                                             
+   4.00000,-176.00000, 52493.0000,F,2009/01/00,   0, 15.04,TOTAL     , 2.8831E+00, 1.8676E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           28 IN PLACES.DAT
+                                                             
+   4.00000,-168.00000, 52493.0000,F,2009/01/00,   0, 14.83,TOTAL     , 2.9205E+00, 1.8854E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           30 IN PLACES.DAT
+                                                             
+   4.00000,-160.00000, 52493.0000,F,2009/01/00,   0, 14.62,TOTAL     , 2.8404E+00, 1.7909E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
+ COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:           32 IN PLACES.DAT
+                                                             

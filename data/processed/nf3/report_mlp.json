@@ -1,0 +1,114 @@
+{
+  "best_params": {
+    "hidden": 64,
+    "depth": 3,
+    "act": "relu",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "epochs": 5000,
+    "batch_size": 256,
+    "patience": 300,
+    "mono_weight": 0.0
+  },
+  "cv": {
+    "blocks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "rmse_log": 0.015118359588086605,
+    "mape_muSv": 1.9240713119506836,
+    "per_block": [
+      {
+        "val_rmse_log": 0.016324087977409363,
+        "val_mape": 2.090444803237915,
+        "best_epoch": 2016,
+        "block": 0
+      },
+      {
+        "val_rmse_log": 0.015587089583277702,
+        "val_mape": 1.9829621315002441,
+        "best_epoch": 923,
+        "block": 1
+      },
+      {
+        "val_rmse_log": 0.014768373221158981,
+        "val_mape": 1.9391576051712036,
+        "best_epoch": 4964,
+        "block": 2
+      },
+      {
+        "val_rmse_log": 0.02089698612689972,
+        "val_mape": 2.6785640716552734,
+        "best_epoch": 1296,
+        "block": 3
+      },
+      {
+        "val_rmse_log": 0.013440591283142567,
+        "val_mape": 1.6984697580337524,
+        "best_epoch": 1546,
+        "block": 4
+      },
+      {
+        "val_rmse_log": 0.01116814836859703,
+        "val_mape": 1.3973801136016846,
+        "best_epoch": 2058,
+        "block": 5
+      },
+      {
+        "val_rmse_log": 0.0166788212954998,
+        "val_mape": 2.1676430702209473,
+        "best_epoch": 1312,
+        "block": 6
+      },
+      {
+        "val_rmse_log": 0.012536509893834591,
+        "val_mape": 1.6327825784683228,
+        "best_epoch": 1342,
+        "block": 7
+      },
+      {
+        "val_rmse_log": 0.01373283937573433,
+        "val_mape": 1.6517099142074585,
+        "best_epoch": 4977,
+        "block": 8
+      },
+      {
+        "val_rmse_log": 0.016497567296028137,
+        "val_mape": 2.1106033325195312,
+        "best_epoch": 1436,
+        "block": 9
+      },
+      {
+        "val_rmse_log": 0.013777085579931736,
+        "val_mape": 1.843324065208435,
+        "best_epoch": 1917,
+        "block": 10
+      },
+      {
+        "val_rmse_log": 0.013573907315731049,
+        "val_mape": 1.8838258981704712,
+        "best_epoch": 1747,
+        "block": 11
+      }
+    ]
+  },
+  "holdout": {
+    "rmse_log": 0.005751962307840586,
+    "mape_muSv": 0.7185921669006348
+  },
+  "full_fit": {
+    "rmse_log": 0.0046617453917860985,
+    "mape_muSv": 0.572863757610321,
+    "n_samples": 3000
+  }
+}
