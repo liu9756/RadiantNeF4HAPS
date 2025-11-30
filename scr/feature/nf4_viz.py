@@ -1,15 +1,3 @@
-# nf4_viz.py
-# -*- coding: utf-8 -*-
-"""
-NF-4: 单高度二维场的可视化与等值线导出
-输入：含列 (lat_deg, lon_deg, dose_pred_uSvph) 的 DataFrame（推荐用 NF-3 的 pred_df）
-输出：
-  - 热力图 PNG（pcolormesh/contourf）
-  - 等值线 CSV（level, path_id, seg_id, pt_idx, lon, lat）
-  - 可选：网格 CSV（lon,lat,dose）用于其他工具
-
-仅依赖 numpy/pandas/matplotlib。
-"""
 from __future__ import annotations
 from pathlib import Path
 from typing import Iterable, Optional, Tuple, List
@@ -19,7 +7,6 @@ import matplotlib
 matplotlib.use("Agg")  
 import matplotlib.pyplot as plt
 
-# ---------- 将散点表格拼网格 ----------
 def to_grid(df: pd.DataFrame, field: str = "dose_pred_uSvph"
            ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     lats = np.sort(df["lat_deg"].to_numpy(dtype=float).round(10))
@@ -39,7 +26,6 @@ def to_grid(df: pd.DataFrame, field: str = "dose_pred_uSvph"
     LAT, LON = np.meshgrid(lats, lons, indexing="ij")
     return LAT, LON, Z
 
-# ---------- 热力图 ----------
 def plot_heatmap(df: pd.DataFrame,
                  field: str = "dose_pred_uSvph",
                  title: str = "Dose rate at ~10 km (μSv/h)",
@@ -66,7 +52,6 @@ def plot_heatmap(df: pd.DataFrame,
         fig.savefig(save_path, dpi=dpi)
     return fig
 
-# ---------- 等值线导出 ----------
 def export_contours_csv(df: pd.DataFrame,
                         levels,
                         out_csv: str,
@@ -94,7 +79,6 @@ def export_contours_csv(df: pd.DataFrame,
     out.to_csv(out_csv, index=False)
     return out
 
-# ---------- 网格 CSV（可选） ----------
 def export_grid_csv(df: pd.DataFrame, out_csv: str, field: str = "dose_pred_uSvph") -> None:
     LAT, LON, Z = to_grid(df, field=field)
     flat = pd.DataFrame({

@@ -1,4 +1,0 @@
-     LAT,       LON,     ALTITUDE,    DATE,    HR, VCR(GV), PARTICLE,  DOSE RATE,     SIGMA,        UNIT,      QUANTITY 
- -52.00000, -96.00000, 82021.0000,F,2014/01/00,   0,  5.16,TOTAL     , 1.2471E+01, 7.2879E-01,    microSv/hr, ICRP Pub. 103 EFFECTIVE DOSE 
- COMMENT OR IMPROPER FORMAT FOR DATA AT LINE:            3 IN PLACES.DAT
-                                                             

@@ -1,27 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-CARI-7A ANS Quality Control
-- Parses one or more .ANS files (robust to ALTITUDE unit column F/G/K).
-- Checks schema/units/date, deduplicates, filters altitude window.
-- Vertical profile checks (soft Pfotzer window), latitude trend checks.
-- Exports CSV and JSON summaries for training readiness.
-
-Refs:
-- ANS header & units: LAT, LON, ALTITUDE, DATE, HR, VCR(GV), PARTICLE, DOSE RATE, SIGMA, UNIT, QUANTITY; rows show ALTITUDE followed by F/G/K; units microSv/hr. (FAA CARI-7A User's Guide)  # see citation in chat
-- Monthly average: dd=00.  # see citation in chat
-- Menu-less DEFAULT.INP + MENUS=NO!: line 5 .LOC -> .ANS.  # see citation in chat
-- Pfotzer maximum may be weak/disappear in dose metrics (soft prior).  # see citation in chat
-"""
 import argparse, csv, json, math, re
 from pathlib import Path
 from typing import List, Dict, Tuple
 import numpy as np
 import pandas as pd
 
-# ---------------------------
-# Parsing
-# ---------------------------
 
 ANS_HEADER = ["LAT", "LON", "ALTITUDE", "DATE", "HR", "VCR(GV)",
               "PARTICLE", "DOSE RATE", "SIGMA", "UNIT", "QUANTITY"]
@@ -110,9 +92,6 @@ def parse_ans(path: Path) -> pd.DataFrame:
     df = pd.DataFrame.from_records(records)
     return df
 
-# ---------------------------
-# QC checks
-# ---------------------------
 
 def qc_schema_units(df: pd.DataFrame) -> Dict:
     issues = []
@@ -196,9 +175,6 @@ def qc_latitude_trend(df: pd.DataFrame, heights_km = (10,12,14,16,18,20,22)) -> 
                             for i in range(len(vals))}})
     return pd.DataFrame(out_rows)
 
-# ---------------------------
-# Main
-# ---------------------------
 
 def main():
     ap = argparse.ArgumentParser()
@@ -211,15 +187,12 @@ def main():
     args = ap.parse_args()
 
     outdir = Path(args.outdir); outdir.mkdir(parents=True, exist_ok=True)
-
-    # Expand glob(s)
     pattern = args.ans_glob
     paths = sorted(Path("/").glob(pattern.lstrip("/"))) if args.recursive else sorted(Path().glob(pattern))
     if len(paths)==0:
         print(f"[QC] No ANS files matched: {pattern}")
         return
 
-    # Parse and concat
     dfs = []
     for p in paths:
         try:

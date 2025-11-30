@@ -15,9 +15,9 @@ def lonlat_to_xyz(lat_deg: float, lon_deg: float, h_km: float = 10.0, R_E_km: fl
 
 @dataclass
 class RadiationField2D:
-    lats: np.ndarray     # shape [L]
-    lons: np.ndarray     # shape [M]
-    Z:    np.ndarray     # shape [L, M], μSv/h
+    lats: np.ndarray     
+    lons: np.ndarray    
+    Z:    np.ndarray    
 
     @classmethod
     def from_grid(cls, grid_csv: str):

@@ -1,25 +1,3 @@
-# nf1_features.py
-# -*- coding: utf-8 -*-
-"""
-NF-1: 特征工程（单高度二维神经场）
-- 输入：CARI-7A 解析后的 CSV（推荐）或原始 .ANS
-- 输出：DataFrame（可选择保存成 CSV），在原始列基础上追加以下列：
-    x_sin_lat, x_cos_lat, x_sin_lon, x_cos_lon, alt_norm, y_log, group_id
-
-设计说明
-1) 列名自适配：如果是你QC产物（lat_deg 等），直接用；如果是原始 .ANS，
-   会先尝试从你现有的 gen_cari_loc_and_parse_ans.read_ans() 解析，
-   若不可用则用内置的轻量解析器（仅读表头后的数值行）。
-2) 不做筛选/去重/单位改动：严格按你当前阶段的约束。
-3) 数学依据：
-   - 经纬 sin/cos 周期编码可缓解坐标-MLP 的频谱偏置，提升高频表达能力；
-     参见 Tancik et al., NeurIPS 2020（Fourier features）与 Rahaman et al., ICML 2019（spectral bias）。
-   - y_log = log1p(μSv/h) 常见于长尾/跨数量级回归的稳定化处理。
-
-参考资料（用于本模块的设计依据）：
-- CARI-7/-7A 用户指南：月平均 dd=00；LOC→ANS 字段与批处理用法。
-- Fourier features / Spectral bias：Tancik 2020；Rahaman 2019.
-"""
 from __future__ import annotations
 from pathlib import Path
 from typing import Optional, Literal, Dict, Any

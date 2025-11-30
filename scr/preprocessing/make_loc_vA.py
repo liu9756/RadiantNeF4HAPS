@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import math, pathlib, argparse
 
 def km_to_feet(km): return int(round(km * 3280.839895))
@@ -28,12 +26,10 @@ def main():
     lats    = [l for l in range(-80, 81, 5)]                        
     lons    = [l for l in range(-180, 176, 10)]                     
 
-    # materialize list
     coords = [(lat, lon, h) for h in heights for lat in lats for lon in lons]
     N = len(coords)
     print(f"[make_loc_vA] total points = {N}")
 
-    # chunking
     parts = []
     for i in range(0, N, args.chunk):
         chunk = coords[i:i+args.chunk]
@@ -45,7 +41,7 @@ def main():
             f.write("STOP---------------------------------------------------------\n")
         parts.append(loc_path.name)
 
-    # write index
+
     with (outdir / "parts.txt").open("w") as f:
         for p in parts:
             f.write(str(p) + "\n")

@@ -1,0 +1,4 @@
+[INFO] jobid=2806180 ALT_KM=12.0 ALT_TAG=h12p0km TASK_ID=0
+[INFO] RAW_PART=part_0000.loc RAW_SRC=/users/PAS2177/liu9756/RadiantNeF4HAPS/work/loc_vA/part_0000.loc
+[INFO] running /tmp/slurmtmp.2806180/cari.2806180.zFslXP/cari7a in /users/PAS2177/liu9756/RadiantNeF4HAPS/data/raw/CARI_7A_DVD
+[INFO] cari7a exit code=0

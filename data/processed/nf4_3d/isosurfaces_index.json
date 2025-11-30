@@ -1,0 +1,12 @@
+{
+  "isosurf_objs": [
+    "/users/PAS2177/liu9756/RadiantNeF4HAPS/data/processed/nf4_3d/isosurfaces/iso_5.00_uSvph.obj",
+    "/users/PAS2177/liu9756/RadiantNeF4HAPS/data/processed/nf4_3d/isosurfaces/iso_8.00_uSvph.obj",
+    "/users/PAS2177/liu9756/RadiantNeF4HAPS/data/processed/nf4_3d/isosurfaces/iso_10.00_uSvph.obj"
+  ],
+  "levels": [
+    5.0,
+    8.0,
+    10.0
+  ]
+}

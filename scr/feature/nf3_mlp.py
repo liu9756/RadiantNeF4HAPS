@@ -1,17 +1,3 @@
-# nf3_mlp.py
-# -*- coding: utf-8 -*-
-"""
-NF-3: 小型坐标-MLP（经度 Block-CV + 早停 + 可选单调先验）
-依赖: numpy, pandas, torch
-
-用法（与 NF-2 类似的纯代码接口）:
-    from nf3_mlp import run_nf3_mlp
-    pred_df, report, state = run_nf3_mlp(df_or_path, lon_block_deg=30.0)
-返回:
-    pred_df: 输入 DataFrame 追加 y_log_pred, dose_pred_uSvph, err_*
-    report : {best_params, cv_metrics, full_fit_metrics, blocks, ...}
-    state  : {"model_state_dict": ..., "config": ...}
-"""
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Dict, Any, Optional, Tuple
@@ -23,8 +9,7 @@ import torch.nn as nn
 
 EPS = 1e-12
 DEVICE = "cpu"  
-
-# ---------- 数据与特征 ----------
+# Feature
 FEAT_COLS = ["x_sin_lat","x_cos_lat","x_sin_lon","x_cos_lon","alt_norm"]
 
 def _ensure_Xy(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
@@ -39,8 +24,7 @@ def make_lon_blocks(lon_deg: np.ndarray, width_deg: float = 30.0) -> np.ndarray:
     lon_shift = (lon_deg + 180.0) % 360.0
     bins = np.floor(lon_shift / float(width_deg)).astype(int)
     return bins  
-
-# ---------- 模型 ----------
+# mlp
 class MLP(nn.Module):
     def __init__(self, in_dim=5, hidden=64, depth=3, act="relu"):
         super().__init__()
@@ -56,7 +40,7 @@ class MLP(nn.Module):
     def forward(self, x):
         return self.net(x).squeeze(-1)  
 
-# ---------- 单调先验（可选） ----------
+
 def monotone_lat_penalty(y_pred: torch.Tensor, lat_deg: np.ndarray, weight: float = 0.0) -> torch.Tensor:
     if weight <= 0 or len(y_pred) < 2:
         return y_pred.new_tensor(0.0)
@@ -66,7 +50,7 @@ def monotone_lat_penalty(y_pred: torch.Tensor, lat_deg: np.ndarray, weight: floa
     diff = yp[:-1] - yp[1:]
     return weight * torch.clamp(diff, min=0).mean()
 
-# ---------- 训练与评估 ----------
+
 @dataclass
 class TrainCfg:
     hidden: int = 64

@@ -1,16 +1,3 @@
-# nf2_baseline.py
-# -*- coding: utf-8 -*-
-"""
-NF-2: 可解释的基线回归（Ridge）+ 经度分块交叉验证
-- 输入：NF-1 产物 DataFrame 或 CSV 路径（需含列：x_sin_lat, x_cos_lat, x_sin_lon, x_cos_lon, alt_norm, y_log,
-        以及辅助列 lat_deg, lon_deg, h_km, dose_rate_uSvph）
-- 输出：预测 DataFrame（追加 y_log_pred, dose_pred_uSvph），以及报告 dict（最佳 alpha、CV 指标等）
-- 仅依赖 numpy/pandas；Ridge 采用闭式解，且**不对截距项**做惩罚。
-
-设计依据：
-- Ridge 回归与其正则化性质：Hastie, Tibshirani, Friedman《Elements of Statistical Learning》，
-  线性回归与 Ridge 章节（第二版，Chapter 3, 18）。"""
-
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Dict, Any, Tuple, Optional
@@ -19,9 +6,6 @@ import pandas as pd
 
 EPS = 1e-12
 
-# -----------------------------
-# 1) 设计矩阵 & 目标
-# -----------------------------
 def _ensure_features(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
     needed = ["x_sin_lat","x_cos_lat","x_sin_lon","x_cos_lon","alt_norm","y_log"]
     missing = [c for c in needed if c not in df.columns]
@@ -31,18 +15,12 @@ def _ensure_features(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
     y = df["y_log"].to_numpy(dtype=float)
     return X, y
 
-# -----------------------------
-# 2) 经度分块（Block-CV）
-# -----------------------------
 def make_lon_blocks(lon_deg: np.ndarray, width_deg: float = 30.0) -> np.ndarray:
     w = float(width_deg)
     lon_shift = (lon_deg + 180.0) % 360.0
     bins = np.floor(lon_shift / w).astype(int)
     return bins  
 
-# -----------------------------
-# 3) Ridge 闭式解（不惩罚截距）
-# -----------------------------
 @dataclass
 class RidgeModel:
     w: np.ndarray  
@@ -65,9 +43,6 @@ def ridge_fit(X: np.ndarray, y: np.ndarray, alpha: float) -> RidgeModel:
 def ridge_predict(X: np.ndarray, model: RidgeModel) -> np.ndarray:
     return X @ model.w + model.b
 
-# -----------------------------
-# 4) 指标
-# -----------------------------
 def rmse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     return float(np.sqrt(np.mean((y_true - y_pred)**2)))
 
@@ -76,9 +51,6 @@ def mape_muSv(y_true_log: np.ndarray, y_pred_log: np.ndarray) -> float:
     p = np.expm1(y_pred_log)
     return float(np.mean(np.abs(p - t) / np.maximum(t, EPS)) * 100.0)
 
-# -----------------------------
-# 5) 经度 Block-CV + alpha 搜索
-# -----------------------------
 def cv_search_alpha(df: pd.DataFrame,
                     alphas: Iterable[float] = (1e-6, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0),
                     lon_block_deg: float = 30.0) -> Dict[str, Any]:
@@ -104,9 +76,6 @@ def cv_search_alpha(df: pd.DataFrame,
     return {"per_alpha": results, "best_alpha": best["alpha"], "best": best,
             "blocks": block_ids.tolist(), "lon_block_deg": lon_block_deg}
 
-# -----------------------------
-# 6) 主流程：训练+预测+报告
-# -----------------------------
 def run_nf2_baseline(features: pd.DataFrame | str,
                      lon_block_deg: float = 30.0,
                      alphas: Iterable[float] = (1e-6, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0),
